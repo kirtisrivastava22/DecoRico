@@ -1,17 +1,3 @@
-{
-  "name": "decorico",
-  "version": "1.0.0",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.21.2",
-    "mongoose": "^8.12.2"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:caf5d79ec3608703d5b7ddc431473a0d0cc73709d87b9f9cd2e1fff51a31bf24
+size 319
