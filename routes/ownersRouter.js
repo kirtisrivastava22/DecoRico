@@ -1,31 +1,24 @@
-const express= require('express');
-const router=express.Router();
-const ownerModel=require('../models/owner-model')
+const express = require("express");
+const router = express.Router();
+const upload = require("../config/multer-config");
+const { registerOwner, loginOwner, logoutOwner } = require("../controllers/ownersController");
 
-// process.env.NODE_ENV="development";
-// console.log(process.env.NODE_ENV);
-if(process.env.NODE_ENV ==="development"){
-    router.post("/create",async function(req,res){
-        let owners=await ownerModel.find();
-        if(owners.length>0) return res.send(503).send("You don't have permissions to create a new owner.");
-        let {fullname, email,password} =req.body;
-        let createdOwner=ownerModel.create({
-            fullname,
-            email,
-            password
-        });
-        res.send(createdOwner);
-    });
+if (process.env.NODE_ENV === "development") {
+    router.post("/create", upload.single("picture"), registerOwner);
 }
-router.get("/ownerlogin",function(req,res){
-    let success=req.flash("success");
-    res.render("Owner can login",{success});
+
+router.post("/ownerlogin", loginOwner);
+
+router.get("/logout", logoutOwner);
+
+router.get("/create-owner", function (req, res) {
+    let error = req.flash("error");
+    res.render("create-owner", { error });
 });
-router.get("/admin",function(req,res){
-    let success=req.flash("success");
-    res.render("createproducts",{success});
+
+router.get("/admin", function (req, res) {
+    let success = req.flash("success");
+    res.render("createproducts", { success });
 });
 
-
-
-module.exports=router;
+module.exports = router;
