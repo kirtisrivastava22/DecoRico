@@ -6,10 +6,10 @@
         <% user.cart.forEach(function(item){ %>
             <div class="w-full flex items-start py-10 gap-10 border-b">
                 <div class="w-[30%] rounded-md overflow-hidden">
-                    <div class="w-full flex justify-center items-center h-80 bg-<%= item.product.bgcolor %>">
+                    <div class="w-full flex justify-center items-center h-80 bg-[<%= item.product.bgcolor %>]">
                         <img class="h-[18rem]" src="data:image/jpeg;base64, <%= item.product.image.toString('base64') %>" alt="">
                     </div>
-                    <div class="w-full flex justify-between px-5 py-4 bg-<%= item.product.panelcolor %>">
+                    <div class="w-full flex justify-between px-5 py-4 bg-[<%= item.product.panelcolor %>]">
                         <h3 class="text-2xl"><%= item.product.name %></h3>
                         <div class="flex items-center gap-2">
                             <a href="/cart/increase/<%= item.product._id %>" class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-add-line"></a>
@@ -17,7 +17,7 @@
                             <a href="/cart/decrease/<%= item.product._id %>" class="w-7 h-7 bg-white flex rounded-full items-center justify-center ri-subtract-line"></a>
                         </div>
                     </div>
-                    <div class="flex items-center justify-between px-5 py-3 bg-<%= item.product.textcolor %>">
+                    <div class="flex text-white items-center justify-between px-5 py-3 bg-[<%= item.product.textcolor %>]">
                         <h4 class="text-lg">Net Total</h4>
                         <h2 class="text-lg">₹ <%= ((Number(item.product.price)- Number(item.product.discount)) * item.quantity) +20 %></h2>
                     </div>

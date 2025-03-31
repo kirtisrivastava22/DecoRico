@@ -3,7 +3,7 @@ const router=express.Router();
 const ownerModel=require('../models/owner-model')
 
 // process.env.NODE_ENV="development";
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 if(process.env.NODE_ENV ==="development"){
     router.post("/create",async function(req,res){
         let owners=await ownerModel.find();
@@ -17,10 +17,15 @@ if(process.env.NODE_ENV ==="development"){
         res.send(createdOwner);
     });
 }
-
+router.get("/ownerlogin",function(req,res){
+    let success=req.flash("success");
+    res.render("Owner can login",{success});
+});
 router.get("/admin",function(req,res){
     let success=req.flash("success");
     res.render("createproducts",{success});
 });
+
+
 
 module.exports=router;
