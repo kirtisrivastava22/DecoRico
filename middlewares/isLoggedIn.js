@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d9b42bec8aa726a5a9b13abd1677479054265291893b005a6b379753714eaacd
-size 592
+const jwt=require("jsonwebtoken");
+const userModel= require("../models/user-model");
+
+module.exports= async function (req,res,next) {
+    if(!req.cookies.token){
+        req.flash("error","you need to login first");
+        return res.redirect("/");
+    }
+    try{
+        let decoded=jwt.verify(req.cookies.token,process.env.JWT_KEY);
+        let user= await userModel.findOne({ email: decoded.email}).select("-password");
+        req.user=user;
+        next();
+    } catch(err){
+        req.flash("error","something went wrong.");
+        return res.redirect("/");
+    }
+};

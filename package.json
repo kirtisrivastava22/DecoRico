@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:03840360cef6f95354c85e2a6051d4422f11a84a771bcc2cd1a5996e8fb6aefd
-size 572
+{
+    "name": "decorico",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+      "bcrypt": "^5.1.1",
+      "config": "^3.3.12",
+      "connect-flash": "^0.1.1",
+      "cookie-parser": "^1.4.7",
+      "debug": "^4.4.0",
+      "dotenv": "^16.4.7",
+      "ejs": "^3.1.10",
+      "express": "^4.21.2",
+      "express-session": "^1.18.1",
+      "jsonwebtoken": "^9.0.2",
+      "mongoose": "^8.12.2",
+      "multer": "^1.4.5-lts.2"
+    }
+  }
+  

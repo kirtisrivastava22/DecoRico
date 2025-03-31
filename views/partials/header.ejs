@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f4c866f403f1afceffff25e8564a32da90685f0045747b8da727426a968ecd79
-size 1004
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-['helvetica_now_display']">
+    <nav class="w-full flex justify-between px-5 py-3">
+        <h3 class="text-2xl font-mono font-bold text-cyan-600">DecoRico</h3>
+        <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
+        <% if(loggedin) { %>
+            <div class="flex gap-5" >
+                <a class="text-xl "href="/shop">Shop</a>
+                <a class="text-xl "href="/cart">Cart</a>
+                <a class="text-xl "href="/myaccount">My Account</a>
+                <a class="text-xl text-red-700 " href="/users/logout">Logout</a>
+            </div>
+        <% } %>
+        
+    </nav>

@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4cfbfc52ce431ebffae7a0cae19c7409aed6318b995908606b046fb160b24aeb
-size 765
+const express= require('express');
+const router=express.Router();
+const upload= require("../config/multer-config");
+const productModel=require("../models/product-model")
+
+router.post("/create",upload.single("image"),async function(req,res){
+    try{
+        let { name, price, discount, bgcolor, panelcolor,textcolor} =req.body;
+
+        let product=await productModel.create({
+            image:req.file.buffer,
+            name,
+            price,
+            discount,
+            bgcolor,
+            panelcolor,
+            textcolor,
+        });
+        req.flash("success","Product created Succesfully");
+        res.redirect("/owners/admin");
+    }catch(err){
+        res.send(err.message);
+    }
+    
+
+});
+
+module.exports=router;

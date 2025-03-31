@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2eff292782419b3bf233787c3249fef7995a48acd7c488f9749d1e41adcaf279
-size 306
+const mongoose = require('mongoose');
+const dbgr = require('debug')("development:mongoose");
+const config=require('config');
+
+mongoose.connect(`${config.get("MONGODB_URI")}/decorico`)
+    .then(() => dbgr("MongoDB connected successfully"))
+    .catch(err => dbgr("MongoDB connection error:", err));
